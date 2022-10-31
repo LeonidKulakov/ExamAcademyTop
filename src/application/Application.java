@@ -49,6 +49,11 @@ public class Application {
         Double limit;
         Integer gP;
         Double percent;
+        String nameCE;
+        String namePE;
+        String namePI;
+        Double sum;
+
         System.out.println("Выбор операции:");
         System.out.println("1 - добавить кошелек \n2 - пополнить кошелек \n3 - потратить деньги с кошелька \n4 - проверить кошелек" +
                 " \n5 - проверить все кошельки \n6 - запрос баланса по всем кошелькам\n7 - удаление кошелька\n___________________________" +
@@ -75,13 +80,14 @@ public class Application {
                         System.out.println("Введи имя карты");
                         nW = scanner.next();
                         System.out.println("Введи сумму");
-                        if (scanner.hasNextDouble()){
+                        if (scanner.hasNextDouble()) {
                             try {
-                                user.addMoneyWallet(nW,scanner.nextDouble());
+                                user.addMoneyWallet(nW, scanner.nextDouble());
                             } catch (NullPointerException e) {
-                                System.out.println("Нет такого кошелька");;
+                                System.out.println("Нет такого кошелька");
+                                ;
                             }
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                         }
                         break;
@@ -89,13 +95,13 @@ public class Application {
                         System.out.println("Введи имя карты");
                         nW = scanner.next();
                         System.out.println("Введи сумму");
-                        if (scanner.hasNextDouble()){
+                        if (scanner.hasNextDouble()) {
                             try {
-                                user.withdrawWalletMoney(nW,scanner.nextDouble());
+                                user.withdrawWalletMoney(nW, scanner.nextDouble());
                             } catch (NullPointerException e) {
                                 System.out.println("Нет такого кошелька");
                             }
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                         }
                         break;
@@ -104,21 +110,21 @@ public class Application {
                         nW = scanner.next();
                         try {
                             user.checkWallet(nW);
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Нет такого кошелька");
                         }
                         break;
                     case (5):
                         try {
                             user.printAllWallets();
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Список пуст");
                         }
                         break;
                     case (6):
                         try {
                             user.getSumAllWallets();
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Список пуст");
                         }
                         break;
@@ -127,7 +133,7 @@ public class Application {
                         nW = scanner.next();
                         try {
                             user.deleteWallet(nW);
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Нет такого кошелька");
                         }
                         break;
@@ -137,39 +143,40 @@ public class Application {
                         System.out.println("Введи имя кредитки");
                         nCC = scanner.next();
                         System.out.println("Введи лимит");
-                        if (scanner.hasNextDouble()){
+                        if (scanner.hasNextDouble()) {
                             limit = scanner.nextDouble();
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                             break;
                         }
                         System.out.println("Введи процент");
-                        if (scanner.hasNextDouble()){
+                        if (scanner.hasNextDouble()) {
                             percent = scanner.nextDouble();
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                             break;
                         }
                         System.out.println("Введи льготный период");
-                        if (scanner.hasNextInt()){
+                        if (scanner.hasNextInt()) {
                             gP = scanner.nextInt();
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                             break;
                         }
-                        user.addCreditCard(nCC,nB,limit,gP,percent);
+                        user.addCreditCard(nCC, nB, limit, gP, percent);
                         break;
                     case (9):
                         System.out.println("Введи имя кредитки");
                         nCC = scanner.next();
                         System.out.println("Введи сумму");
-                        if (scanner.hasNextDouble()){
+                        if (scanner.hasNextDouble()) {
                             try {
-                                user.addMoneyCreditCard(nCC,scanner.nextDouble());
+                                user.addMoneyCreditCard(nCC, scanner.nextDouble());
                             } catch (NullPointerException e) {
-                                System.out.println("Нет такой кредитки");;
+                                System.out.println("Нет такой кредитки");
+                                ;
                             }
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                         }
                         break;
@@ -177,13 +184,13 @@ public class Application {
                         System.out.println("Введи имя кредитки");
                         nCC = scanner.next();
                         System.out.println("Введи сумму");
-                        if (scanner.hasNextDouble()){
+                        if (scanner.hasNextDouble()) {
                             try {
-                                user.withdrawMoneyCreditCard(nCC,scanner.nextDouble());
+                                user.withdrawMoneyCreditCard(nCC, scanner.nextDouble());
                             } catch (NullPointerException e) {
                                 System.out.println("Нет такой кредитки");
                             }
-                        }else {
+                        } else {
                             System.out.println("Введено не число");
                         }
                         break;
@@ -192,21 +199,21 @@ public class Application {
                         nCC = scanner.next();
                         try {
                             user.checkCreditCard(nCC);
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Нет такой кредитки");
                         }
                         break;
                     case (12):
                         try {
                             user.getSumAllCreditCards();
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Список пуст");
                         }
                         break;
                     case (13):
                         try {
                             user.showCreditCards();
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Список пуст");
                         }
                         break;
@@ -215,58 +222,136 @@ public class Application {
                         nCC = scanner.next();
                         try {
                             user.deleteCreditCard(nCC);
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Нет такой кредитки");
                         }
                         break;
                     case (15):
                         try {
                             user.getAllMoney();
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             System.out.println("Список пуст");
                         }
                         break;
                     case (16):
-                        System.out.println();
+                        System.out.println("Введи потенциальную затрату");
+                        namePE = scanner.next();
+                        System.out.println("Введи банк для списания");
+                        nB = scanner.next();
+                        System.out.println("Введи сумму");
+                        if (scanner.hasNextDouble()) {
+                            sum = scanner.nextDouble();
+                            user.addPotentialExpense(namePE, nB, sum);
+                        } else {
+                            System.out.println("Введено не число");
+                        }
                         break;
                     case (17):
-                        System.out.println();
+                        System.out.println("Введи потенциальную затрату");
+                        namePE = scanner.next();
+                        try {
+                            user.getPotentialExpense(namePE);
+                        } catch (NullPointerException e) {
+                            System.out.println("Нет такой затраты");
+                        }
                         break;
                     case (18):
-                        System.out.println();
+                        System.out.println("Введи потенциальную затрату");
+                        namePE = scanner.next();
+                        try {
+                            user.deletePotentialExpense(namePE);
+                        } catch (NullPointerException e) {
+                            System.out.println("Нет такой затраты");
+                        }
                         break;
                     case (19):
-                        System.out.println();
+                        try {
+                            user.getAllPotentialExpense();
+                        }catch (NullPointerException e) {
+                            System.out.println("Список пуст");
+                        }
                         break;
                     case (20):
-                        System.out.println();
+                        System.out.println("Введи текущую затрату");
+                        nameCE = scanner.next();
+                        System.out.println("Введи банк для списания");
+                        nB = scanner.next();
+                        System.out.println("Введи сумму");
+                        if (scanner.hasNextDouble()) {
+                            sum = scanner.nextDouble();
+                            user.addCurrentExpense(nameCE, nB, sum);
+                        } else {
+                            System.out.println("Введено не число");
+                        }
                         break;
                     case (21):
-                        System.out.println();
+                        System.out.println("Введи текущую затрату");
+                        nameCE = scanner.next();
+                        try {
+                            user.getCurrentExpense(nameCE);
+                        } catch (NullPointerException e) {
+                            System.out.println("Нет такой затраты");
+                        }
                         break;
                     case (22):
-                        System.out.println();
+                        System.out.println("Введи текущую затрату");
+                        nameCE = scanner.next();
+                        try {
+                            user.deleteCurrentExpense(nameCE);
+                        } catch (NullPointerException e) {
+                            System.out.println("Нет такой затраты");
+                        }
                         break;
                     case (23):
-                        System.out.println();
+                        try {
+                            user.getAllCurrentExpense();
+                        }catch (NullPointerException e) {
+                            System.out.println("Список пуст");
+                        }
                         break;
                     case (24):
-                        System.out.println();
+                        System.out.println("Введи потенциальный доход");
+                        namePI = scanner.next();
+                        System.out.println("Введи банк для списания");
+                        nB = scanner.next();
+                        System.out.println("Введи сумму");
+                        if (scanner.hasNextDouble()) {
+                            sum = scanner.nextDouble();
+                            user.addPotentialIncom(namePI,nB,sum);
+                        } else {
+                            System.out.println("Введено не число");
+                        }
                         break;
                     case (25):
-                        System.out.println();
+                        System.out.println("Введи потенциальный доход");
+                        namePI = scanner.next();
+                        try {
+                            user.getPotentialIncom(namePI);
+                        } catch (NullPointerException e) {
+                            System.out.println("Нет такого дохода");
+                        }
                         break;
                     case (26):
-                        System.out.println();
+                        System.out.println("Введи потенциальный доход");
+                        namePI = scanner.next();
+                        try {
+                            user.deletePotentialIncom(namePI);
+                        } catch (NullPointerException e) {
+                            System.out.println("Нет такого дохода");
+                        }
                         break;
                     case (27):
-                        System.out.println();
+                        try {
+                            user.getAllPotentialIncom();
+                        }catch (NullPointerException e) {
+                            System.out.println("Список пуст");
+                        }
                         break;
 
                 }
                 System.out.println("1 - продолжить работу\nЗавершить работу - любая другая кнопка");
-                if (scanner.hasNextInt()){
-                     if (scanner.nextInt() == 1){
+                if (scanner.hasNextInt()) {
+                    if (scanner.nextInt() == 1) {
                         operationSelection(user);
                     } else {
                         System.out.println("Пока");
