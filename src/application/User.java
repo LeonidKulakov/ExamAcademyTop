@@ -14,17 +14,17 @@ public class User {
     private String userName;
     private HashMap<String, CreditCard> creditCards;
     private HashMap<String, Wallet> wallets;
-    private HashMap<String, CurrentExpense> currentExpenses;
-    private HashMap<String, PotentialExpense> potentialExpenses;
-    private HashMap<String, PotentialIncom> potentialIncoms;
+    private CurrentExpense currentExpense;
+    private PotentialExpense potentialExpenses;
+    private PotentialIncom potentialIncoms;
 
     public User(String userName) {
         this.userName = userName;
         this.creditCards = new HashMap<>();
         this.wallets = new HashMap<>();
-        this.currentExpenses = new HashMap<>();
-        this.potentialExpenses = new HashMap<>();
-        this.potentialIncoms = new HashMap<>();
+        this.currentExpense = new CurrentExpense();
+        this.potentialExpenses = new PotentialExpense();
+        this.potentialIncoms = new PotentialIncom();
     }
 
     /**
@@ -43,6 +43,7 @@ public class User {
     public void withdrawWalletMoney(String nameWallet, Double money) throws NullPointerException {
         Wallet wal = wallets.get(nameWallet);
         wal.withdrawMoney(money);
+        currentExpense.addCurrentExpense(wal.toString(),money);
     }
 
     public void checkWallet(String nameWallet) throws NullPointerException {
@@ -95,6 +96,7 @@ public class User {
     public void withdrawMoneyCreditCard(String nameCreditCard, Double money) {
         CreditCard cc = creditCards.get(nameCreditCard);
         cc.addMoney(money);
+        currentExpense.addCurrentExpense(cc.toString(),money);
     }
 
     public void checkCreditCard(String name) throws NullPointerException {
@@ -118,7 +120,7 @@ public class User {
     public void showCreditCards() throws NullPointerException {
         for (Map.Entry s : creditCards.entrySet()) {
             CreditCard cc = (CreditCard) s.getValue();
-            System.out.println("Кредитка "+s.getKey()+" "+cc.toString());
+            System.out.println("Кредитка " + s.getKey() + " " + cc.toString());
         }
     }
 
@@ -135,70 +137,34 @@ public class User {
     /**
      * Блок потенциальных затрат
      */
-    public void addPotentialExpense(String namePotentialExpense, String nameBank, Double sum) {
-        potentialExpenses.put(namePotentialExpense, new PotentialExpense(nameBank, sum));
+    public void addPotentialExpense(String namePotentialExpense, Double sum) {
+        potentialExpenses.addPotentialExpense(namePotentialExpense,sum);
     }
 
-    public void getPotentialExpense(String namePotentialExpense) throws NullPointerException {
-        PotentialExpense potentialExpense = (PotentialExpense) potentialExpenses.get(namePotentialExpense);
-        System.out.println(potentialExpense.toString());
-    }
-
-    public void deletePotentialExpense(String namePotentialExpense) throws NullPointerException {
-        potentialExpenses.remove(namePotentialExpense);
-    }
-
-    public void getAllPotentialExpense() {
-        for (Map.Entry s : potentialExpenses.entrySet()) {
-            PotentialExpense potentialExpense = (PotentialExpense) s.getValue();
-            System.out.println(potentialExpense.toString());
-        }
+    public void printAllPotentialExpense()throws NullPointerException{
+        potentialExpenses.printPotentialExpense();
     }
 
     /**
      * Блок текущих затрат
      */
 
-    public void addCurrentExpense(String nameCurrentExpense, String nameBank, Double sum) {
-        currentExpenses.put(nameCurrentExpense, new CurrentExpense(nameBank, sum));
-    }
-
-    public void getCurrentExpense(String nameCurrentExpense) throws NullPointerException {
-        CurrentExpense currentExpense = (CurrentExpense) currentExpenses.get(nameCurrentExpense);
-        System.out.println(currentExpense.toString());
-    }
-
-    public void deleteCurrentExpense(String nameCurrentExpense) throws NullPointerException {
-        creditCards.remove(nameCurrentExpense);
-    }
-
-    public void getAllCurrentExpense() {
-        for (Map.Entry s : creditCards.entrySet()) {
-            CurrentExpense currentExpense = (CurrentExpense) s.getValue();
-            System.out.println(currentExpense.toString());
+    public void getAllCurrentExpense() throws NullPointerException {
+        try {
+            currentExpense.printCurrentExpense();
+        } catch (NullPointerException e) {
+            System.out.println("Список пуст");
         }
     }
 
     /**
      * Блок планируемых доходов
      */
-    public void addPotentialIncom(String namePotentialIncom, String nameBank, Double sum) {
-        potentialIncoms.put(namePotentialIncom, new PotentialIncom(nameBank, sum));
+    public void addPotentialIncom(String namePotentialIncom, Double sum) {
+        potentialIncoms.addPotentialIncom(namePotentialIncom,sum);
+    }
+    public void printAllPotentialIncom()throws NullPointerException{
+        potentialIncoms.printPotentialIncom();
     }
 
-    public void getPotentialIncom(String namePotentialIncom) throws NullPointerException {
-        PotentialIncom potentialIncom = (PotentialIncom) potentialIncoms.get(namePotentialIncom);
-        System.out.println(potentialIncom.toString());
-    }
-
-    public void deletePotentialIncom(String namePotentialIncom) throws NullPointerException {
-        potentialIncoms.remove(namePotentialIncom);
-    }
-
-    public void getAllPotentialIncom() {
-        for (Map.Entry s : potentialIncoms.entrySet()) {
-            PotentialIncom potentialIncom = (PotentialIncom) s.getValue();
-            System.out.println(potentialIncom.toString());
-        }
-    }
 }

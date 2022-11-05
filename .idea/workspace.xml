@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="406e2af8-f25c-4bef-bfa4-0565d9d86cf2" name="Changes" comment="ExamDone">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/card/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/card/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/finance/CurrentExpense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/finance/CurrentExpense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/finance/PotentialExpense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/finance/PotentialExpense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/finance/PotentialIncom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/finance/PotentialIncom.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +58,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="application.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Exam" />
       <extension name="coverage">
@@ -67,7 +74,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.application.Main" />
       </list>
     </recent_temporary>
   </component>

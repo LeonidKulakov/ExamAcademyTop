@@ -1,31 +1,28 @@
 package application.finance;
 
 
+import java.util.ArrayList;
+
 public class PotentialExpense {
-    private String name;
-    private Double potentialExpense;
 
-    public PotentialExpense(String name, Double potentialExpense) {
-        this.name = name;
-        this.potentialExpense = potentialExpense;
+    private ArrayList<String> potentialExpense;
+
+    public PotentialExpense() {
+        this.potentialExpense = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Double getPotentialExpense() {
-        return potentialExpense;
-    }
-
-    @Override
-    public String toString() {
+    public void addPotentialExpense(String s, Double m){
         StringBuilder builder = new StringBuilder();
-        builder.append("Назначение потенциального расхода: ");
-        builder.append(name);
-        builder.append(". Сумма: ");
-        builder.append(potentialExpense);
-        builder.append("р.");
-        return builder.toString();
+        builder.append("Назначение платежа: ");
+        builder.append(s);
+        builder.append(" Сумма: ");
+        builder.append(m);
+        potentialExpense.add(builder.toString());
     }
+    public void printPotentialExpense(){
+        for (String s: potentialExpense){
+            System.out.println(s);
+        }
+    }
+
 }

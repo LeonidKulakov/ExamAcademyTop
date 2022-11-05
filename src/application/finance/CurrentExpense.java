@@ -1,32 +1,28 @@
 package application.finance;
 
 
+import java.util.ArrayList;
+
 public class CurrentExpense {
-    private String name;
-    private Double currentExpense;
+    private ArrayList<String> currentExpenses;
 
-    public CurrentExpense(String name, Double currentExpense) {
-        this.name = name;
-        this.currentExpense = currentExpense;
+    public CurrentExpense() {
+        currentExpenses = new ArrayList<>();
+
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Double getCurrentExpense() {
-        return currentExpense;
-    }
-
-    @Override
-    public String toString() {
+    public void addCurrentExpense(String cE, Double m) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Назначение текущего платежа: ");
-        builder.append(name);
-        builder.append(". Сумма ");
-        builder.append(currentExpense);
-        builder.append("р.");
-        return builder.toString();
+        builder.append("Покупка на сумму: ");
+        builder.append(m);
+        builder.append("р. ");
+        builder.append(cE);
+        currentExpenses.add(builder.toString());
+    }
+    public void printCurrentExpense()throws NullPointerException{
+        for (String s: currentExpenses){
+            System.out.println(s);
+        }
     }
 
 }

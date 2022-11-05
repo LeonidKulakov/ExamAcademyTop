@@ -8,7 +8,7 @@ public class CreditCard {
     private Double sum;
 
     /**
-     * Написать методы управления кредиткой
+     *
      */
     public CreditCard(String name, Double limit, Integer gracePeriod, Double percent) {
         this.name = name;

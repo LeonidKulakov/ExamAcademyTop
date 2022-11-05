@@ -1,31 +1,27 @@
 package application.finance;
 
 
+import java.util.ArrayList;
+
 public class PotentialIncom {
-    private String name;
-    private Double potentialIncom;
+    private ArrayList<String> potentialIncom;
 
-    public PotentialIncom(String name, Double potentialIncom) {
-        this.name = name;
-        this.potentialIncom = potentialIncom;
+    public PotentialIncom() {
+        this.potentialIncom = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Double getPotentialIncom() {
-        return potentialIncom;
-    }
-
-    @Override
-    public String toString() {
+    public void addPotentialIncom(String s, Double m){
         StringBuilder builder = new StringBuilder();
         builder.append("Назначение платежа: ");
-        builder.append(name);
-        builder.append(". Сумма ");
-        builder.append(potentialIncom);
-        builder.append("р.");
-        return builder.toString();
+        builder.append(s);
+        builder.append(" Сумма: ");
+        builder.append(m);
+        potentialIncom.add(builder.toString());
     }
+    public void printPotentialIncom(){
+        for (String s: potentialIncom){
+            System.out.println(s);
+        }
+    }
+
 }
